@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginFormModule } from '../components/login-form/login-form.module';
 import { Router } from '@angular/router';
 import { ToastComponent } from '../components/toast/toast.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,12 @@ import { ToastComponent } from '../components/toast/toast.component';
 export class LoginComponent {
   constructor(
     private router: Router,
+    private userService: UserService,
   ) { }
+
+  SpotifyUserLogin = () => {
+     this.userService.getSpotifyUserLogin();
+  };
 
   registerAction() {
     this.router.navigate(['/register']);

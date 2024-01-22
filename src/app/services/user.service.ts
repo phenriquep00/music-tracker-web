@@ -46,7 +46,7 @@ export class UserService {
       // Handle errors here if needed
       console.error('Error in getUser API call:', error);
       throw error;
-    } 
+    }
   }
 
   async createUser(user: UserModel): Promise<string | UserModel> {
@@ -59,7 +59,7 @@ export class UserService {
         )
         .toPromise();
 
-        this.setUserModel(response);
+      this.setUserModel(response);
 
       return response || this.userModel; // Provide a default value or handle accordingly
     } catch (error) {
@@ -69,6 +69,12 @@ export class UserService {
     }
   }
 
-
-  
+  getSpotifyUserLogin = () => {
+    fetch("http://localhost:8080/auth/login")
+      .then((response) => response.text())
+      .then(response => {
+        window.location.replace(response);
+      })
+  };
 }
+

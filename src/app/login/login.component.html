@@ -2,9 +2,10 @@
 <div class="flex flex-col gap-3 items-center justify-center w-full h-screen">
    <!-- Your login form content -->
    <app-toast></app-toast>
-   <app-login-form></app-login-form>
-   <button (click)="registerAction()"
-      class="dark:border-teal-600 border-teal-800 hover:text-white dark:bg-transparent bg-teal-100 border-2 p-2 rounded dark:text-white hover:bg-teal-600 transition-all duration-200">
-      Register
+   <button
+      (click)="SpotifyUserLogin()"
+      class="text-white border-2 p-4 rounded hover:bg-white hover:text-black transition-all duration-300"
+   >
+      Login with spotify
    </button>
 </div>
