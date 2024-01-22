@@ -1,0 +1,12 @@
+<!-- toast.component.html -->
+
+<div *ngIf="showToast && message" class="fixed top-14 left-10 z-50">
+  <div
+    [style.background-color]="getToastBackgroundColor()"
+    class="toast text-white p-2 md:p-4 rounded-md border border-solid border-gray-300 transition-transform duration-300 transform hover:scale-105"
+  >
+    {{ message }}
+    <button class="ml-2" (click)="closeToast()">X</button>
+  </div>
+</div>
+
