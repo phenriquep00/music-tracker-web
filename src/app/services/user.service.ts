@@ -76,5 +76,13 @@ export class UserService {
         window.location.replace(response);
       })
   };
+
+  getUserTopArtists = () => {
+    fetch("http://localhost:8080/auth/user-top-artists")
+      .then((response) => response.text())
+      .then(response => {
+        console.log(response)
+      })
+  }
 }
 

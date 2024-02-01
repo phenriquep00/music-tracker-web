@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(
+    private userService: UserService
+  ) { }
 
+  getUserTopArtists = () => {
+    this.userService.getUserTopArtists();
+  }
 }
