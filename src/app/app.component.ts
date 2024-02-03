@@ -1,11 +1,13 @@
 import { Component, HostBinding, signal, effect, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, PlayerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

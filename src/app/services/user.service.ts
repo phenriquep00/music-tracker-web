@@ -41,9 +41,8 @@ export class UserService {
         params: { username: data.username, password: data.password },
       }));
 
-      return response || this.userModel; // Provide a default value or handle accordingly
+      return response || this.userModel;
     } catch (error) {
-      // Handle errors here if needed
       console.error('Error in getUser API call:', error);
       throw error;
     }
@@ -54,16 +53,15 @@ export class UserService {
       const response = await this.http.post<UserModel>(`${this.apiUrl}/`, user)
         .pipe(
           catchError((error) => {
-            throw error; // Rethrow the error to be caught in the component
+            throw error; 
           })
         )
         .toPromise();
 
       this.setUserModel(response);
 
-      return response || this.userModel; // Provide a default value or handle accordingly
+      return response || this.userModel;
     } catch (error) {
-      // Handle errors here if needed
       console.error('Error in createUser API call:', error);
       throw error;
     }
