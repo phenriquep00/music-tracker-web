@@ -81,6 +81,12 @@ export class UserService {
       .then(response => {
         console.log(response)
       })
+  };
+
+  getUserSavedAlbums = async () => {
+    const response = await fetch("http://localhost:8080/auth/user-saved-albums");
+    const responseData = await response.json();
+    return responseData;
   }
 }
 

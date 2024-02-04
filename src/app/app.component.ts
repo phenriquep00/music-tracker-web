@@ -21,7 +21,7 @@ export class AppComponent {
 
   @HostBinding('class.dark') get mode() {
     return this.darkMode();
-  }
+  };
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     effect(() => {
