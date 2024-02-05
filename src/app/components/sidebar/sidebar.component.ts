@@ -1,31 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+
+// Import CommonModule
+import { CommonModule } from '@angular/common';
+import { AlbumCardComponent } from './album-card/album-card.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css'],
+  imports: [CommonModule, AlbumCardComponent]
 })
 export class SidebarComponent {
 
   userSavedAlbums: any[] = [];
 
-  constructor(
-    private userService: UserService
-  ) { }
+  constructor(private userService: UserService) { }
 
-  async ngOnInit() {
-    try {
-      this.userSavedAlbums = await this.userService.getUserSavedAlbums();
-    } catch (error) {
-      console.error('Error fetching user saved albums:', error);
-    }
+  ngOnInit() {
+    this.getSavedAlbums();
   }
 
-  logAlbums() {
-    console.log(this.userSavedAlbums);
-  }
-
+  getSavedAlbums = async () => {
+    this.userSavedAlbums = await this.userService.getUserSavedAlbums();
+  };
 }

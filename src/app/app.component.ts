@@ -7,7 +7,7 @@ import { PlayerComponent } from './components/player/player.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent, PlayerComponent],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, PlayerComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -23,11 +23,15 @@ export class AppComponent {
     return this.darkMode();
   };
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    ) {
     effect(() => {
       if (isPlatformBrowser(this.platformId)) {
         window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
       }
     });
   }
+
+  
 }

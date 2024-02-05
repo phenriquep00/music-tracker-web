@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginFormModule } from '../components/login-form/login-form.module';
 import { Router } from '@angular/router';
 import { ToastComponent } from '../components/toast/toast.component';
 import { UserService } from '../services/user.service';
@@ -8,7 +7,6 @@ import { UserService } from '../services/user.service';
   selector: 'app-login',
   standalone: true,
   imports: [
-    LoginFormModule,
     ToastComponent
   ],
   templateUrl: './login.component.html',
@@ -24,7 +22,4 @@ export class LoginComponent {
      this.userService.getSpotifyUserLogin();
   };
 
-  registerAction() {
-    this.router.navigate(['/register']);
-  }
 }
