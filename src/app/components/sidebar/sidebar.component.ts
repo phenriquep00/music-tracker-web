@@ -18,11 +18,11 @@ export class SidebarComponent {
 
   constructor(private userService: UserService) { }
 
-  ngOnInit() {
-    this.getSavedAlbums();
-  }
-
-  getSavedAlbums = async () => {
-    this.userSavedAlbums = await this.userService.getUserSavedAlbums();
+  ngOnInit(): void {
+    this.getUserSavedAlbums();
   };
+
+  getUserSavedAlbums(): void {
+    this.userService.getUserSavedAlbums().toPromise().then(response => this.userSavedAlbums = response || []);
+  }
 }

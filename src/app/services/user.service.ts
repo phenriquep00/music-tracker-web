@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom, throwError } from 'rxjs';
 import { UserModel } from '../user/user.model';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,25 @@ export class UserService {
       })
   };
 
-  getUserSavedAlbums = async () => {
-    const response = await fetch("http://localhost:8080/auth/user-saved-albums");
-    const responseData = await response.json();
-    return responseData;
+  getUserSavedAlbums(): Observable<[]> {
+    return this.http.get<[]>('http://localhost:8080/auth/user-saved-albums')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }
 

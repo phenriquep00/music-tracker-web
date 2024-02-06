@@ -13,13 +13,9 @@
 
   <!-- Display userSavedAlbums data using app-album-card component -->
   <div *ngIf="userSavedAlbums.length > 0" 
-  class="flex flex-col gap-2 overflow-y-scroll flex-1 flex-nowrap max-h-[400px]">
+  class="flex flex-col gap-2 overflow-y-scroll flex-1 flex-nowrap max-h-[460px]">
     <app-album-card *ngFor="let album of userSavedAlbums" [album]="album.album"></app-album-card>
   </div>
-  
-  <button (click)="ngOnInit()">
-    Click me
-  </button>
   
 </div>
 
