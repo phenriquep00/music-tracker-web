@@ -1,4 +1,4 @@
-<div class="bg-neutral-900 w-full h-[24%] rounded-md flex flex-col items-center justify-evenly">
+<div class="bg-neutral-900 w-full h-1/4 rounded-md flex flex-col items-center justify-evenly">
    <a href="/home" class="transition-transform transform hover:scale-110">
       <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">home</span>
    </a>
@@ -6,9 +6,10 @@
       <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">search</span>
    </a>
 </div>
-<div class="bg-neutral-900 w-full flex-1 rounded-md flex flex-col items-center">
+
+<div class="bg-neutral-900 w-full rounded-md h-3/4 flex flex-col items-center">
    <!-- lista de albums -->
-   <div *ngIf="recentAlbums.length > 0" class="flex flex-col gap-1 mt-2 overflow-y-scroll flex-nowrap max-h-[420px]">
-      <app-album-card *ngFor="let album of recentAlbums" [album]="album.album" />
-   </div>
+      <div *ngIf="recentAlbums.length > 0" class="flex flex-col mb-1 gap-1 mt-2 overflow-y-scroll flex-nowrap">
+         <app-album-card *ngFor="let album of recentAlbums" [album]="album.album" />
+      </div>
 </div>

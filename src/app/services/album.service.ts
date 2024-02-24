@@ -10,8 +10,6 @@ export class AlbumService {
   constructor() { }
 
   getUserRecentAlbums = async () => {
-
-
     await fetch("http://localhost:8080/album/saved-albums")
       .then(response => response.json())
       .then(res => {
