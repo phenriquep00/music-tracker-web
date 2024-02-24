@@ -7,6 +7,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SettingsService } from './services/settings.service';
 import { CommonModule } from '@angular/common';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,5 +19,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'music-tracker-web';
 
-  constructor(public ss: SettingsService) {}
+  constructor(public ss: SettingsService, public us: UserService) {
+    
+  }
 }

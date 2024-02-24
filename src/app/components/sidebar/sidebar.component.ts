@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AlbumService } from '../../services/album.service';
+import { UserService } from '../../services/user.service';
+import { AlbumCardComponent } from './album-card/album-card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [AlbumCardComponent, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
+  recentAlbums: Array<any> = [];
+
+  constructor(public albumService: AlbumService, public userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.token$.subscribe((newToken) => {
+      if (newToken !== '') 
+      {
+        this.albumService.getUserRecentAlbums().then(response => this.recentAlbums = response || []);
+      } else 
+      {
+        this.recentAlbums = []
+      }
+    });
+  }
 
 }
