@@ -1,38 +1,25 @@
-import { Component, HostBinding, signal, effect, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ContainerComponent } from './components/container/container.component';
 import { PlayerComponent } from './components/player/player.component';
-import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsService } from './services/settings.service';
+import { CommonModule } from '@angular/common';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterOutlet, SidebarComponent, PlayerComponent,],
+  imports: [CommonModule, RouterOutlet, ContainerComponent, PlayerComponent, SidebarComponent, TopbarComponent, SettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-
 export class AppComponent {
-  darkMode = signal<boolean>(
-    isPlatformBrowser(this.platformId) ?
-      JSON.parse(window.localStorage.getItem('darkMode') ?? 'false') :
-      false
-  );
+  title = 'music-tracker-web';
 
-  @HostBinding('class.dark') get mode() {
-    return this.darkMode();
-  };
-
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    ) {
-    effect(() => {
-      if (isPlatformBrowser(this.platformId)) {
-        window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
-      }
-    });
+  constructor(public ss: SettingsService, public us: UserService) {
+    
   }
-
-  
 }

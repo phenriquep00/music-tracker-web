@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(315deg, rgba(0, 0, 0, 1) 78%, rgba(5, 82, 21, 0.969625350140056) 100%);
+    color: white;
+}

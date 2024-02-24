@@ -1,23 +1,12 @@
-<main class="main flex flex-col items-stretch min-h-screen min-w-full bg-zinc-200 dark:bg-zinc-900">
-    <!-- topbar -->
-    <div class="top-0 w-screen bg-zinc-300 dark:bg-zinc-950 text-white p-3 font-semibold text-lg shadow-lg">
-      <div class="flex items-center justify-between">
-        <p class="dark:text-white text-black ">
-            Music Tracker
-        </p>
-        
-        <button class="flex transition-transform hover:scale-125 align-middle" (click)="darkMode.set(!darkMode())">
-          <span *ngIf="!darkMode()" class="material-icons">dark_mode</span>
-          <span *ngIf="darkMode()" class="material-icons">light_mode</span>
-        </button>
-      </div>
+<div class="flex flex-col h-screen w-screen overflow-hidden">
+    <app-topbar class="h-[8vh] flex items-center p-4 justify-between" />
+    <div class="h-[80vh] flex p-2 gap-2">
+        <app-sidebar class="h-full flex flex-col items-center gap-2 min-w-24 rounded-md shadow-lg drop-shadow-2xl " />
+        <app-container class="bg-neutral-900 flex flex-1 items-center justify-center h-full rounded-md shadow-lg drop-shadow-2xl" />
+        <app-settings *ngIf="ss.isActive"
+            class="bg-neutral-900 p-3 flex flex-col max-w-96 flex-1 h-full rounded-md shadow-lg drop-shadow-2xl" />
     </div>
-    <!-- content container -->
-    <div class="flex flex-1 w-full h-full flex-row">
-      <app-sidebar class="flex items-center justify-center"></app-sidebar>
-      <div class="flex-1 overflow-hidden">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="h-[12vh] flex px-2 pb-2">
+        <app-player class="flex flex-1 items-center justify-center" />
     </div>
-    <app-player></app-player>
-  </main>
+</div>

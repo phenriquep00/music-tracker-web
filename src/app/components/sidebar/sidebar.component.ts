@@ -1,28 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
-
-// Import CommonModule
-import { CommonModule } from '@angular/common';
 import { AlbumCardComponent } from './album-card/album-card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
+  imports: [AlbumCardComponent, CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
-  imports: [CommonModule, AlbumCardComponent]
+  styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
-  userSavedAlbums: any[] = [];
+  recentAlbums: Array<any> = [];
 
-  constructor(private userService: UserService) { }
+  constructor(public albumService: AlbumService, public userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUserSavedAlbums();
-  };
-
-  getUserSavedAlbums(): void {
-    this.userService.getUserSavedAlbums().toPromise().then(response => this.userSavedAlbums = response || []);
+    this.userService.token$.subscribe((newToken) => {
+      if (newToken !== '') 
+      {
+        this.albumService.getUserRecentAlbums().then(response => this.recentAlbums = response || []);
+      } else 
+      {
+        this.recentAlbums = []
+      }
+    });
   }
+
 }
