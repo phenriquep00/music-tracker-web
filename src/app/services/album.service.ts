@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class AlbumService {
 
   recentAlbums = [];
+  album = [];
 
   constructor() { }
 
@@ -20,4 +21,16 @@ export class AlbumService {
 
       return this.recentAlbums;
   };
+
+  getAlbumById = async (albumId: string) => {
+    await fetch(`http://localhost:8080/album/get-album/${albumId}`)
+      .then(response => response.json())
+      .then(res => {
+        this.album = res;
+        console.log(res);
+        return this.album;
+      })
+
+      return this.album;
+  }
 }
