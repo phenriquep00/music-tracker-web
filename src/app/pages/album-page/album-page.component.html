@@ -1,0 +1,55 @@
+<div class="flex h-full flex-1 flex-col flex-grow items-center gap-6 p-8 overflow-y-scroll">
+    <!-- header -->
+    <div class="flex flex-row w-full gap-4">
+        <div>
+            <img class="max-w-full h-auto max-h-48 p-1 rounded-md" *ngIf="album!.images && album!.images.length > 0"
+                [src]="album.images[0].url" alt="Album Cover">
+        </div>
+        <div class="flex gap-3 flex-col flex-1 justify-end">
+            <div>
+                <div class="text-neutral-300">album</div>
+                <div class="font-bold text-neutral-100 text-7xl">{{album.albumName}}</div>
+            </div>
+
+            <div class="flex ml-1  flex-row gap-2">
+                <!-- TODO: addd artist image -->
+                <div></div>
+                <div class="text-neutral-100 font-semibold">{{album.artists[0].name}}</div>
+                ●
+                <div class="text-neutral-300 font-normal">{{album.year.split("-")[0]}}</div>
+                ●
+                <div class="text-neutral-300 font-light">{{album.tracks.length}} songs,
+                    {{getAlbumDuration(album.tracks)}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- tracklist -->
+    <table class="flex flex-col w-full items-center justify-center">
+        <!-- table header -->
+        <tr class="flex w-full justify-between text-neutral-400 px-4 font-medium border-b-[1px] border-neutral-500">
+            <div class="flex gap-8">
+                <th>#</th>
+                <th>Title</th>
+            </div>
+            <div class="flex gap-24 pr-4 ">
+                <th><span class="material-icons text-base">schedule</span></th>
+            </div>
+        </tr>
+        <!-- tracks -->
+        <tr *ngFor="let track of album.tracks; let i = index"
+            class="flex w-full p-4 text-lg justify-between mx-4 text-neutral-200 hover:bg-white/20 rounded-lg hover:cursor-pointer">
+            <div class="flex gap-8 items-center">
+                <td class="font-thin text-base text-neutral-300">{{ i + 1 }}</td>
+                <td>{{track.trackName}}</td>
+            </div>
+            <div class="flex gap-24 pr-4">
+                <td class="font-thin text-base text-neutral-300">{{getTrackDuration(track.duration)}}</td>
+            </div>
+        </tr>
+    </table>
+    <!-- footer -->
+    <div>
+        footer
+    </div>
+</div>
