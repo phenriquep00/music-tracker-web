@@ -13,20 +13,12 @@ import { CommonModule } from '@angular/common';
 })
 export class SidebarComponent implements OnInit {
 
-  recentAlbums: Array<any> = [];
+  //recentAlbums: Array<any> = [];
 
   constructor(public albumService: AlbumService, public userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.token$.subscribe((newToken) => {
-      if (newToken !== '') 
-      {
-        this.albumService.getUserRecentAlbums().then(response => this.recentAlbums = response || []);
-      } else 
-      {
-        this.recentAlbums = []
-      }
-    });
+    
   }
 
 }

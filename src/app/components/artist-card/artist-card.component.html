@@ -1,0 +1,5 @@
+<button class="h-full">
+    <img class="max-w-full h-auto max-h-28 p-1 rounded-full transition-transform transform hover:scale-110"
+        *ngIf="artist!.images && artist!.images.length > 0" title="{{artist.name}}" [src]="artist.images[0].url"
+        alt="Artist cover">
+</button>

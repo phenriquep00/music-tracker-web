@@ -1,4 +1,4 @@
 <button (click)="onCardClick()" class="text-white hover:bg-white/30 rounded-lg">
     <img class="max-w-full h-auto max-h-20 p-1 rounded-3xl" *ngIf="album!.images && album!.images.length > 0"
-        [src]="album.images[0].url" alt="Album Cover">
+        [src]="album.images[0].url" alt="Album Cover" title="{{album.albumName}} - {{album.artists[0].name}}">
 </button>

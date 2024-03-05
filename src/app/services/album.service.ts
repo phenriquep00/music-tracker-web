@@ -15,10 +15,10 @@ export class AlbumService {
       .then(response => response.json())
       .then(res => {
         this.recentAlbums = res
-        return(this.recentAlbums);
       })
-
-      return this.recentAlbums;
+      .catch(e => {
+        console.error(e);
+      })
   };
 
   getAlbumById = async (albumId: string) => {

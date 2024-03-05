@@ -1,25 +1,3 @@
 <div class="">
-    <div class="text-white bg-red-500">
-        {{currentTrack.trackName}}
-    </div>
-    <div>
-        <button (click)="previous()">
-            <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">skip_previous</span>
-        </button>
-
-        <button (click)="togglePlayer()">
-            <span *ngIf="playerService.isPauseButtonActive" class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">
-                pause
-            </span>
-
-            <span *ngIf="playerService.isPlayButtonActive" class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">
-                play_arrow
-            </span>
-
-        </button>
-
-        <button (click)="next()">
-            <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">skip_next</span>
-        </button>
-    </div>
+   
 </div>
