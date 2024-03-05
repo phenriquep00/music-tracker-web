@@ -15,7 +15,6 @@ export class AlbumService {
       .then(response => response.json())
       .then(res => {
         this.recentAlbums = res
-        console.log(this.recentAlbums)
         return(this.recentAlbums);
       })
 
@@ -27,7 +26,6 @@ export class AlbumService {
       .then(response => response.json())
       .then(res => {
         this.album = res;
-        console.log(res);
         return this.album;
       })
 
