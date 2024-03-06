@@ -4,6 +4,7 @@ import { IArtist } from '../models/IArtist';
 import { ArtistService } from './artist.service';
 import { AlbumService } from './album.service';
 import { PlaylistService } from './playlist.service';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,12 @@ export class UserService {
   private tokenSubject = new BehaviorSubject<string>('');
   token$ = this.tokenSubject.asObservable();
 
-  constructor(private artistService: ArtistService, private albumService: AlbumService, private playlistService: PlaylistService) { }
+  constructor(
+    private artistService: ArtistService, 
+    private albumService: AlbumService, 
+    private playlistService: PlaylistService, 
+    private loadingService: LoadingService
+    ) { }
 
   getToken = async () => {
     console.log('inside user-service -> getToken')
@@ -29,9 +35,11 @@ export class UserService {
   }
 
   loadInitialData = async () => {
+    this.loadingService.toggleIsLoadingActive()
     await this.artistService.getUserTopArtists()
       .then(async () => await this.albumService.getUserRecentAlbums())
       .then(async () => await this.playlistService.getUserPlaylists())
+      .then(() => this.loadingService.toggleIsLoadingActive())
       ;
   }
 

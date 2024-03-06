@@ -8,11 +8,12 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { SettingsService } from './services/settings.service';
 import { CommonModule } from '@angular/common';
 import { UserService } from './services/user.service';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ContainerComponent, PlayerComponent, SidebarComponent, TopbarComponent, SettingsComponent],
+  imports: [CommonModule, RouterOutlet, ContainerComponent, PlayerComponent, SidebarComponent, TopbarComponent, SettingsComponent, LoadingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
