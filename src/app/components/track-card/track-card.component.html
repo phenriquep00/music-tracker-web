@@ -1,0 +1,19 @@
+<tr
+    class="flex w-full p-2 text-lg justify-between mx-2 text-neutral-200 hover:bg-white/20 rounded-lg hover:cursor-pointer">
+    <div class="flex gap-8 items-center">
+        <td class="font-thin text-base text-neutral-300">{{ index }}</td>
+        <td>
+            <div>
+                {{track.trackName}}
+                <div class="flex items-center font-thin text-base text-neutral-300">
+                    {{track.artists[0].name}}
+                </div>
+            </div>
+            
+        </td>
+    </div>
+
+    <div class="flex gap-24 pr-4">
+        <td class="font-thin text-base text-neutral-300">{{getTrackDuration(track.duration)}}</td>
+    </div>
+</tr>

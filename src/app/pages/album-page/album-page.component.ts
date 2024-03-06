@@ -4,6 +4,7 @@ import { AlbumService } from '../../services/album.service';
 import { getAlbumFullLenghtInMinutes } from '../../utils/albumBO';
 import { formatTrackDuration } from '../../utils/TrackBO';
 import { CommonModule } from '@angular/common';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-album-page',
@@ -17,7 +18,7 @@ export class AlbumPageComponent implements OnInit, OnChanges {
   albumId!: string;
   album: any;
 
-  constructor(private route: ActivatedRoute, private as: AlbumService) { }
+  constructor(private route: ActivatedRoute, private as: AlbumService, private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,7 +34,10 @@ export class AlbumPageComponent implements OnInit, OnChanges {
   }
 
   private fetchAlbumData(): void {
-    this.as.getAlbumById(this.albumId).then(response => this.album = response)
+    this.loadingService.toggleIsLoadingActive();
+    this.as.getAlbumById(this.albumId)
+      .then(response => this.album = response)
+      .then(() => this.loadingService.toggleIsLoadingActive());
   }
 
   getAlbumDuration = (tracks: any) => {

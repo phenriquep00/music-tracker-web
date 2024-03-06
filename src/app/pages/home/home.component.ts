@@ -8,11 +8,15 @@ import { PlaylistService } from '../../services/playlist.service';
 import { PlaylistCardComponent } from '../../components/playlist-card/playlist-card.component';
 import { getRandomElements } from '../../utils/getRandomElements';
 import { IPlaylist } from '../../models/IPlaylist';
+import { RecomendationService } from '../../services/recomendation.service';
+import { TrackService } from '../../services/track.service';
+import { TrackCardComponent } from '../../components/track-card/track-card.component';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ArtistCardComponent, PlaylistCardComponent],
+  imports: [CommonModule, ArtistCardComponent, PlaylistCardComponent, TrackCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -24,7 +28,10 @@ export class HomeComponent implements OnInit {
     public userService: UserService,
     public artistService: ArtistService,
     public albumService: AlbumService,
-    public playlistService: PlaylistService
+    public playlistService: PlaylistService,
+    public recommendationsService: RecomendationService,
+    public trackService: TrackService,
+    public settingService: SettingsService
   ) { 
     this.updateGreeting();
   }
@@ -35,6 +42,9 @@ export class HomeComponent implements OnInit {
       .then(() => console.log("top artists: ", this.artistService.userTopArtists))
       .then(() => console.log("recent albums: ", this.albumService.recentAlbums))
       .then(() => console.log("user playlists: ", this.playlistService.userPlaylists))
+      //.then(() => console.log("recommended tracks: ", this.recommendationsService.recommendedTracks))
+      .then(() => console.log("featured playlists: ", this.playlistService.featuredPlaylists))
+      .then(() => console.log("user top tracks: ", this.trackService.userTopTracks))
       ;
   }
 
@@ -51,7 +61,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getRandomPlaylists() {
-    return getRandomElements(this.playlistService.userPlaylists, 5);
+  getRandomPlaylists(playlist: IPlaylist[]) {
+    return getRandomElements(playlist, 5);
   }
 }
