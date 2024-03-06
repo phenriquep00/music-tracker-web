@@ -70,4 +70,8 @@ export class HomeComponent implements OnInit {
   goToPlaylistsPage() {
     this.router.navigate(['/user/playlists']);
   }
+
+  goToFeaturedPlaylistsPage() {
+    this.router.navigate(['/featured/playlists'])
+  }
 }

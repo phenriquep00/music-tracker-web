@@ -5,6 +5,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { AlbumPageComponent } from './pages/album-page/album-page.component';
 import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 import { UserPlaylistsComponent } from './pages/user-playlists/user-playlists.component';
+import { FeaturedPlaylistsComponent } from './pages/featured-playlists/featured-playlists.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,9 @@ export const routes: Routes = [
     },
     {
         path: 'user/playlists', component: UserPlaylistsComponent
+    },
+    {
+        path: 'featured/playlists', component: FeaturedPlaylistsComponent
     },
     {
         path: '', redirectTo: '/login', pathMatch: 'full'
