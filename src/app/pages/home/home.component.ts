@@ -12,6 +12,7 @@ import { RecomendationService } from '../../services/recomendation.service';
 import { TrackService } from '../../services/track.service';
 import { TrackCardComponent } from '../../components/track-card/track-card.component';
 import { SettingsService } from '../../services/settings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   greeting!: string;
 
   constructor(
+    private router: Router,
     public userService: UserService,
     public artistService: ArtistService,
     public albumService: AlbumService,
@@ -63,5 +65,9 @@ export class HomeComponent implements OnInit {
 
   getRandomPlaylists(playlist: IPlaylist[]) {
     return getRandomElements(playlist, 5);
+  }
+
+  goToPlaylistsPage() {
+    this.router.navigate(['/user/playlists']);
   }
 }

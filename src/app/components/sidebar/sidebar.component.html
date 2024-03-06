@@ -1,10 +1,10 @@
 <div class="bg-neutral-900 w-full h-1/4 rounded-md flex flex-col items-center justify-evenly">
-   <a href="/home" class="transition-transform transform hover:scale-110">
+   <button (click)="goToHomePage()" class="transition-transform transform hover:scale-110">
       <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">home</span>
-   </a>
-   <a href="/search" class="transition-transform transform hover:scale-110">
+   </button>
+   <button (click)="goToSearchPage()" class="transition-transform transform hover:scale-110">
       <span class="material-icons text-4xl text-neutral-300 hover:text-white transition-all">search</span>
-   </a>
+   </button>
 </div>
 
 <div class="bg-neutral-900 w-full rounded-md h-3/4 flex flex-col items-center">

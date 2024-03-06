@@ -6,8 +6,8 @@
                 <h2 class="text-neutral-100 font-bold text-4xl">{{ greeting }}</h2>
             </div>
             <div class="w-full flex items-end justify-end -mt-4 mb-4">
-                <a href="/" class="font-thin text-neutral-300 text-sm hover:underline hover:text-neutral-100">
-                    check all of your playlists...</a>
+                <button (click)="goToPlaylistsPage()" class="font-thin text-neutral-300 text-sm hover:underline hover:text-neutral-100">
+                    check all of your playlists...</button>
             </div>
             <div class="flex w-full items-center justify-evenly flex-row">
                 <app-playlist-card *ngFor="let playlist of getRandomPlaylists(this.playlistService.userPlaylists)"

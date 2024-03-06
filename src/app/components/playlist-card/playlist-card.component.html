@@ -1,4 +1,4 @@
-<button class="h-full max-w-36 group">
+<button (click)="onCardClick()" class="h-full max-w-36 group">
     <img class="max-h-36 max-w-36 min-h-36 min-w-36 p-1 rounded-3xl transition-transform transform hover:scale-105"
       *ngIf="playlist!.images && playlist!.images.length > 0" [src]="playlist.images[0].url" alt="Playlist cover"
       title="{{playlist.name}}">

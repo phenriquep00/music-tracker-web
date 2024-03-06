@@ -3,7 +3,7 @@ export interface IPlaylist {
     images: any;
     name: string;
     owner: any;
-    publicAcess: boolean
+    publicAcess: boolean;
     snapshopId: string;
     collaborative: boolean;
     externalUrls: any;

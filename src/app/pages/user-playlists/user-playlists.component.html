@@ -1,0 +1,21 @@
+<div class="flex h-full flex-1 flex-col items-center justify-between p-4 gap-8 flex-grow overflow-y-scroll">
+    <div class="font-bold text-neutral-100 text-7xl">
+        Your Playlists
+    </div>
+
+
+    <div class="w-full h-full grid grid-cols-3 gap-4">
+        <button (click)="goToPlaylistPage(playlist.id)" *ngFor="let playlist of playlistService.userPlaylists"
+            class="p-4 flex gap-2 flex-row bg-neutral-950/90 rounded-md w-auto h-auto group hover:bg-white/10 transition-all duration-100">
+            <div>
+                <img class="max-h-36 max-w-36 min-h-36 min-w-36 p-1 rounded-3xl"
+                    *ngIf="!!playlist.images && playlist.images.length > 0" [src]="playlist.images[0].url"
+                    alt="Playlist Cover">
+            </div>
+            <div class="flex w-full h-full items-start justify-end flex-col gap-2 -mb-4">
+                <p class="font-bold text-neutral-100 text-2xl group-hover:underline">{{playlist.name}}</p>
+                <p class="font-light text-neutral-300 text-lg">by: {{playlist.owner.displayName}}</p>
+            </div>
+        </button>
+    </div>
+</div>

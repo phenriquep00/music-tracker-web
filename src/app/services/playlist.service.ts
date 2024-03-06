@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPlaylist } from '../models/IPlaylist';
+import { createNewPlaylist } from '../helper/factories';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class PlaylistService {
 
   userPlaylists: IPlaylist[] = [];
   featuredPlaylists: IPlaylist[] = [];
+  playlist!: IPlaylist;
 
   constructor() { }
 
@@ -27,5 +29,23 @@ export class PlaylistService {
       .catch(e => {
         console.error(e);
       })
+  }
+
+  getPlaylistById = async (id: string): Promise<IPlaylist> => {
+    try {
+      const response = await fetch(`http://localhost:8080/playlist/get-playlist/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    
+      const json = await response.json();
+      this.playlist = json;
+      console.log(json);
+      return this.playlist;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error fetching playlist data');
+    }
+    
   }
 }
