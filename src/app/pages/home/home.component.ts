@@ -41,12 +41,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getToken()
       .then(async () => {await this.userService.loadInitialData()})
-      .then(() => console.log("top artists: ", this.artistService.userTopArtists))
-      .then(() => console.log("recent albums: ", this.albumService.recentAlbums))
-      .then(() => console.log("user playlists: ", this.playlistService.userPlaylists))
+      //.then(() => console.log("top artists: ", this.artistService.userTopArtists))
+      //.then(() => console.log("recent albums: ", this.albumService.recentAlbums))
+      //.then(() => console.log("user playlists: ", this.playlistService.userPlaylists))
       //.then(() => console.log("recommended tracks: ", this.recommendationsService.recommendedTracks))
-      .then(() => console.log("featured playlists: ", this.playlistService.featuredPlaylists))
-      .then(() => console.log("user top tracks: ", this.trackService.userTopTracks))
+      //.then(() => console.log("featured playlists: ", this.playlistService.featuredPlaylists))
+      //.then(() => console.log("user top tracks: ", this.trackService.userTopTracks))
       ;
   }
 

@@ -28,9 +28,8 @@ export class AlbumPageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['albumId'] && !changes['albumId'].firstChange) {
+    if (changes['albumId'] && !changes['albumId'].firstChange) 
       this.fetchAlbumData();
-    }
   }
 
   private fetchAlbumData(): void {
